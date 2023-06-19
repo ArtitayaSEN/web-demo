@@ -1,12 +1,181 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Main Page</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script src="JS/jquery-3.6.0.js" type="text/javascript"></script>
+    <script src="JS/datetime.js" type="text/javascript"></script>
+    <link href="CSS/datetime.css" rel="stylesheet"  type="text/css">
+    <title>ตารางสินค้า</title>
+    <style>
+        #myTable {
+        display: none; 
+        }
+    </style>
+    <title>Datetime</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Kanit&family=Sarabun&display=swap');
+        body {
+            background-color: lightgoldenrodyellow;
+        }
+        h1,h3 {
+            font-family: 'Kanit', sans-serif;
+            color: #000000;
+        }
+        p, div {
+            font-family: Sarabun, sans-serif;
+        }
+        img {
+            margin-top: 1em;
+            margin-bottom: 2em;
+        }
+        table{
+
+            border-collapse: collapse;
+            width: 50%;
+        }
+        .center {
+            text-align: center;
+        }
+        button {
+            font-family: 'Kanit', sans-serif;
+            font-size: large;
+        }
+        button {
+            font-size: large;
+        }
+        table,th,td{
+            border: 1px solid rgb(0, 0, 0);
+            border-collapse: collapse;
+        }
+        th{
+            background-color: #f1fd46;
+
+        }
+        td{
+            background-color: #ffffff;
+        }
+        t{
+          font-family: 'none', none;
+            font-size: large;
+        }
+        .button {
+          left: 50%;
+        }
+    </style>
+    <title>แสดงวันที่และเวลา</title>
+    <script>
+      function showDateTime() {
+        var currentDate = new Date();
+        var day = currentDate.getDate();
+        var month = currentDate.getMonth() + 1;
+        var year = currentDate.getFullYear();
+        var hours = currentDate.getHours();
+        var minutes = currentDate.getMinutes();
+        var seconds = currentDate.getSeconds();
+  
+        var thaiMonths = [
+          'มกราคม', 'กุมภาพันธ์', 'มีนาคม', 'เมษายน', 'พฤษภาคม', 'มิถุนายน',
+          'กรกฎาคม', 'สิงหาคม', 'กันยายน', 'ตุลาคม', 'พฤศจิกายน', 'ธันวาคม'
+        ];
+  
+        var thaiDay = ' ' + day + ' ' + thaiMonths[month - 1] + ' ' + year;
+        var time = ' ' + hours + ':' + minutes + ':' + seconds;
+  
+        document.getElementById('currentDate').innerText = thaiDay ,document.getElementById('currentTime').innerText = time;
+      }
+    </script>
+   <script>
+    function showTable() {
+      document.getElementById("myTable").style.display = "table";
+      document.getElementById("showTableBtn").style.display = "show";
+      document.getElementById("hideTableBtn").style.display = "inline-block";
+    }
+  
+    function hideTable() {
+      document.getElementById("myTable").style.display = "none";
+      document.getElementById("showTableBtn").style.display = "inline-block";
+      document.getElementById("hideTableBtn").style.display = "show";
+    }
+  </script>
+    <title>ค่าเฉลี่ย ค่าสูงสุด และค่าต่ำสุด</title>
+    <script>
+      function calculateStats() {
+        var input1 = parseFloat(document.getElementById('input1').value);
+        var input2 = parseFloat(document.getElementById('input2').value);
+        var input3 = parseFloat(document.getElementById('input3').value);
+  
+        var average = (input1 + input2 + input3) / 3;
+        var max = Math.max(input1, input2, input3);
+        var min = Math.min(input1, input2, input3);
+  
+        document.getElementById('average').innerText = 'ค่าเฉลี่ย: ' + average.toFixed(2);
+        document.getElementById('max').innerText = 'ค่าสูงสุด: ' + max;
+        document.getElementById('min').innerText = 'ค่าต่ำสุด: ' + min;
+      }
+    </script>
    
-    <title>First Page</title>
-</head>
-<body>
-    <h1>Hello World</h1>
-    <p>Artitaya Senkamson</p>
-    <p>I'm 19 years old</p>
-</body>
+  </head>
+  <body>
+    <h1 class="center" id="header">สวัสดีชาวโลก</h1>
+    <div class="center"><button type="button" onclick="document.getElementById('header').style.color='red'">เปลี่ยนสี</button></div>
+
+    <div class="center">
+        <button onclick="document.getElementById('myImage').src='images/Idle.png'">แมวยืน</button>
+        <img id="myImage" src="images/Idle.png" width="200px">    
+        <button onclick="document.getElementById('myImage').src='images/Slide.png'">แมวสไลด์</button>
+    </div>
+       
+    <p>ทดสอบการพิมพ์ภาษาไทย</p>
+    <div>ทดสอบการสร้างเว็บด้วย HTML</div>
+    <h1>วันที่และเวลาปัจจุบัน</h1>
+    <div id="currentDate,currentTime"></div>
+    <div class="center"><img src="images/dog-puppy.jpg" width="50%" height="50%"></div>
+    <a href="https://www.google.co.th" target="_blank">Google</a>
+    
+    <h1>ตารางสินค้า</h1>
+    <h2>
+      <button id="showTableBtn" onclick="showTable()">แสดงตาราง</button>
+      <button  class="button" id="hideTableBtn" onclick="hideTable()">ซ่อนตาราง</button>
+    </h2>
+    <table id="myTable" style="display: none;">
+    <thead>
+      <tr>
+        <th>รายการที่ 1</th>
+        <th>รายการที่ 2</th>
+        <th>รายการที่ 3</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>8</td>
+       <td>16</td>
+       <td>32</td>
+      </tr>
+      <tr>
+        <td>64</td>
+        <td>128</td>
+        <td>256</td>
+      </tr>
+    </tbody>
+    </table>
+  <h1>ค่าเฉลี่ย ค่าสูงสุด และค่าต่ำสุด</h1>
+  <h3>Number #1:</h3>
+  <label for="input1"></label>
+  <input type="number" id="input1"><br>
+  <h3>Number #2:</h3>
+  <label for="input2"></label>
+  <input type="number" id="input2"><br>
+  <h3>Number #3:</h3>
+  <label for="input3"></label>
+  <input type="number" id="input3"><br>
+
+  <button onclick="calculateStats()">Submit</button><br>
+
+  <div id="average"></div>
+  <div id="max"></div>
+  <div id="min"></div>
+  </body>
 </html>
